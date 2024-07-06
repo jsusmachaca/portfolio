@@ -1,0 +1,202 @@
+---
+import '/public/styles/fonts.css'
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="shotcut icon"  href="/favicon.ico" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<aside>
+			<ul id="nav-list">
+				<li class="nav-item">
+					<span id="home" class="material-symbols-outlined icon">home</span>
+				</li>
+				<li class="nav-item">
+					<span id="apps" class="material-symbols-outlined icon">apps</span>
+				</li>
+				<li class="nav-item">
+					<span id="more" class="material-symbols-outlined icon">more_vert</span>
+				</li>
+			</ul>
+			<h1 id="nav-title">JSUS MACHACA</h1>
+		</aside>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<script>
+	const sections = document.querySelectorAll<HTMLElement>('.content')
+  const seenSections = new Set<string>()
+
+	const $main = document.querySelector('main')
+
+	const $home = document.getElementById('home')
+	const $apps = document.getElementById('apps')
+	const $more = document.getElementById('more')
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+			const section = entry.target.id
+      if (entry.isIntersecting) {
+				if (!seenSections.has(section)) {
+					seenSections.add(section)
+					console.log(section)
+					if (section === 'about') $home?.classList.add('focused-icon')
+					if (section === 'projects') $apps?.classList.add('focused-icon')
+        }
+      } else {
+				if (seenSections.has(section)) {
+          seenSections.delete(section)
+					if (section === 'about') $home?.classList.remove('focused-icon')
+					if (section === 'projects') $apps?.classList.remove('focused-icon')
+        }
+			}
+    })
+  }, {
+    threshold: .1
+  })
+
+	$home?.addEventListener('click', () => {
+		$main?.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		})
+	})
+
+	$apps?.addEventListener('click', () => {
+		$main?.scrollBy({
+			top: $main.clientHeight,
+			left: 0,
+			behavior: 'smooth'
+		})
+	})
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+</script>
+
+<style is:global>
+	*, body, html {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		/* background: #13151a; */
+	}
+	body {
+		display: grid;
+		grid-template-columns: 65px 1fr;
+		gap: 10px;
+		align-self: center;
+		background-image: url('/imgs/city.png');
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.material-symbols-outlined {
+		font-size: 46px;
+	}
+	aside {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		align-items: center;
+		background: #040509;
+		margin: 5px 5px 5px 5px;
+		border-radius: 30px;
+	}
+	#nav-list {
+		margin-top: 20px;
+		list-style: none;
+	}
+	.nav-item {
+		margin-bottom: 60px;
+		transition: all .1s ease-in-out;
+		cursor: pointer;
+	}
+	.nav-item:hover {
+		scale: 125%;
+	}
+	.nav-item span {
+		text-decoration: none;
+	}
+	.icon {
+		color: rgb(198, 241, 255);
+	}
+	.focused-icon {
+		scale: 125%;
+		color: #ffca5f;
+		transition: all .1s ease-in-out;
+	}
+	#nav-title {
+		color: #ffca5f;
+		font-size: 25px;
+		width: auto;
+		height: auto;
+		font-family: 'Press Start 2P', 'VT323';
+		writing-mode: vertical-rl;
+		text-orientation: upright;
+		margin-bottom: 22px;
+	}
+	main {
+		margin: 20px 30px 30px 5px;
+		border-radius: 20px;
+		background-color: rgba(15, 16, 26, .99);
+    box-shadow: 1px 1px #c5c5c5, 3px 3px #c5c5c5, 5px 5px #c5c5c5, 7px 7px #c5c5c5, 8px 8px #c5c5c5, 9px 9px #c5c5c5, 10px 10px #c5c5c5, 11px 11px #c5c5c5;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		scroll-snap-type: y mandatory;
+		scroll-behavior: smooth;
+		display: grid;
+		grid-template-rows: 1fr 1fr 100% 100%;
+		align-items: center;
+		place-items: center;
+	}
+	main::-webkit-scrollbar {
+		width: 0;
+	}
+
+	@media (width < 680px) {
+		body {
+			grid-template-columns: 1fr;
+			gap: 1px;
+		}
+		main {
+			margin: 5px 10px 10px 5px;
+		}
+		#nav-title {
+			display: none;
+		}	
+		
+		#nav-list {
+			margin-top: 0;
+			margin-bottom: 0;
+			display: flex;
+			list-style: none;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.nav-item {
+			margin-bottom: 0;
+			margin: 0 30px;
+		}
+	}
+</style>

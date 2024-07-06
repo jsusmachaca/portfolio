@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'VT323';
+    src: url('/fonts/VT323-Regular.ttf');
+}
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('/fonts/PressStart2P-Regular.ttf');
+}
+@font-face {
+    font-family: 'Kanit';
+    src: url('/fonts/Kanit/Kanit-Light.ttf');
+}
+@font-face {
+    font-family: 'Anton';
+    src: url('/fonts/Anton-Regular.ttf');
+}
+@font-face {
+    font-family: 'Ubuntu Mono';
+    src: url('/fonts/UbuntuMonoNerdFont-Bold.ttf');
+}

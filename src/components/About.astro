@@ -1,0 +1,147 @@
+---
+import Skills from "./about/Skills.astro"
+import Contact from "./about/Contact.astro"
+
+const bornDate = new Date('2003-10-01')
+const currentDate = new Date()
+
+const difdDate = currentDate.getTime() - bornDate.getTime()
+const years = difdDate / (1000 * 60 * 60 * 24 * 365.25)
+const age = Math.floor(years)
+---
+
+<section id="about" class="content">
+  <h1 id="title">
+    <span class="sign">
+      &lt
+        <span class="sign-label">h1</span>
+      &gt
+    </span>
+    <br>
+    <span id="text-title">
+      I'm Jesus Machaca
+    </span>
+    <br>
+      <span class="sign">
+      &lt/
+        <span class="sign-label">h1</span>
+      &gt
+    </span>
+  </h1>
+  <article id="info">
+    <p id="text-info">
+      <span class="sign">&lt;<span class="sign-label">p</span>&gt;</span><br>
+        My name is Jesus Gonzalo Machaca. I am a {age}-year-old full stack developer, more inclined towards backend development. 
+        I love and am passionate about IT, especially programming. I studied
+        <span class="resalt">"Software Design and Development"</span> at the <span class="resalt">"TECSUP"</span> higher institute.
+        I have 3 years of experience in the field, acquiring, polishing and learning more skills every day.
+        I share my knowledge on TikTok, where I demonstrate my capabilities.
+        <br><span class="sign">&lt;/<span class="sign-label">p</span>&gt;</span>
+    </p>
+    <Contact />
+  </article>
+  <article id="skills">
+    <Skills />
+  </article>
+</section> 
+
+
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+
+  const $title = document.querySelector('#text-title')
+  let currentIndexs = 0;
+
+  function setName() {
+    const names = ["Full Stack Developer", "I'm Jesus Machaca"]
+    $title!.innerHTML = names[currentIndexs]
+    currentIndexs = (currentIndexs + 1) % names.length
+  }
+  setInterval(setName, 3000);
+  })
+</script>
+
+
+<style>
+  .content {
+    scroll-snap-align: start;
+    margin-top: 80px;
+    display: grid;
+    grid-template-rows: 200px 1fr 200px;
+    margin: 0 80px;
+    gap: 10px;
+  }
+  #title {
+    margin: 60px 0;
+    text-align: left;
+    font-size: 35px;
+    font-family: 'Press Start 2P';
+    color: #e80058;
+  }
+  #skills {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #info {
+    margin-top: 30px;
+  }
+  #text-info {
+    text-align: left;
+    color: #dafffd;
+    font-size: 25px;
+    font-family: 'Kanit';
+  }
+  .sign {
+    font-family: 'Kanit';
+    color: gold;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+  }
+  .sign-label {
+    font-family: 'Kanit';
+    color: #e80058;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+  } 
+  .resalt {
+      color: #ffc95c;
+      font-weight: bold;
+  }
+  @media (width > 1400px) {
+    #title {
+      margin: 150px 0;
+      font-size: 50px;
+    }
+    .content {
+      scroll-snap-align: start;
+      margin: 0 80px;
+      display: grid;
+      grid-template-columns: 700px 750px;
+      grid-template-rows: 580px 270px ;
+      gap: 30px;
+      place-content: center;
+    }
+    .content article:last-child {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    .content #skills {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    #info {
+      margin-top: 80px;
+    }
+    #text-info {
+      font-size: 25px;  
+    }
+  }
+  @media (width < 635px) {
+    .content {
+      grid-template-columns: 500px;
+      grid-template-rows: 200px 1fr 150px;
+      margin: 0 80px;
+    }
+  }
+</style>

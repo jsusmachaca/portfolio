@@ -1,0 +1,142 @@
+#project-container {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    place-items: center;
+}
+#card {
+    width: 1000px;
+    height: 450px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: rgba(21, 22, 34, 0.850);
+    overflow: hidden;
+}
+#overlay {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 180px 50px 120px;
+    height: 100%;
+    padding: 0 60px;
+}
+#overlay p {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+#overlay a:last-child {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    justify-self: start;
+    align-self: end;
+}
+#overlay a:nth-last-child(2) {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    justify-self: end;
+    align-self: end;
+}
+#card-text {
+    font-size: 21.5px;
+    font-family: 'Kanit';
+    text-align: left;
+    color: #dafffd;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+}
+#title-container {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+#card-text-title {
+    color: #ffc95c;
+    font-family: 'VT323', monospace;
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+}
+.urls-button {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    border-radius: 10px;
+    background-color: #dafffd;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Anton';
+    color: #000;
+    font-size: 19px;
+    margin: 0;
+    transition: transform .3s ease-in-out;
+    img {
+        margin-right: 5px;
+    }
+}
+.urls-button:hover {
+    transform: scale(110%);
+}
+.sign {
+    font-family: 'Kanit';
+    margin-left: -30px;
+    color: gold;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+}
+.sign-label {
+    font-family: 'Kanit';
+    color: #e80058;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+} 
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #dafffd;
+    font-family: 'Kanit';
+    font-size: 18px;
+}
+.icon-container span {
+    padding: 0;
+    margin-right: 20px;
+    font-family: 'Ubuntu Mono';
+    font-size: 40px;
+    color: #dafffd;
+}
+.icon-container .star-icon {
+    color: #ffd000;
+    font-size: 30px;
+    margin-right: 27px;
+}
+.icon-container .fork-icon {
+    color: violet;
+    font-size: 30px;
+    margin-right: 27px;
+}
+.urls-icon {
+    padding: 0;
+    margin-right: 20px;
+    font-family: 'Ubuntu Mono';
+    font-size: 40px;
+    color: #000;
+}
+
+@media (width < 1100px) {
+    #card {
+        width: 80vw;
+    }
+    #overlay {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 240px 50px 70px;
+        height: 100%;
+        padding: 0 60px;
+    }
+}

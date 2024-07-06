@@ -1,0 +1,64 @@
+---
+  import ProjectContainer from "./projects/ProjectContainer"
+---
+
+<section id="projects" class="content">
+  <h4 id="projects-title">
+    <span class="projects-sign">&lt;<span class="sign-h3">h3</span>&gt;</span>My Github Projects<span class="projects-sign">&lt;/<span class="sign-h3">h3</span>&gt;</span>
+  </h4>
+  <ProjectContainer client:load />
+</section> 
+
+<style>
+  .content {
+    scroll-snap-align: start;
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 170px 1fr;
+    place-items: center;
+  }
+  @media (width < 635px) {
+    .content {
+      grid-template-columns: 500px;
+      margin: 0 20px;
+    }
+  }
+  #projects-title {
+    margin: 80px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #e80058;
+    font-size: 35px;
+    font-family: 'Press Start 2P';
+    margin-bottom: 10px;
+  }
+  .projects-sign {
+    font-family: 'Kanit';
+    color: gold;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+  }
+  .sign-h3 {
+      font-family: 'Kanit';
+      color: #e80058;
+      text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5);
+  } 
+  .resalt {
+      color: #ffc95c;
+      font-weight: bold;
+  }
+  
+  @media (width > 1400px) {
+    .content {
+      margin: 0 10px;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(700px);
+      place-items: center;
+    }
+    #projects-title {
+      font-size: 40px;
+    }
+  }
+</style>
