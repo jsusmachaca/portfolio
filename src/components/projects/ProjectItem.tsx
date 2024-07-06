@@ -29,9 +29,9 @@ const ProjectItem = (
         <span className="icon-container"><span className="fork-icon"></span>{ forks }</span>
 
         { homepage &&(
-          <a className="urls-button" href={ homepage }><span className="urls-icon">󰖟 </span> Website</a>
+          <a className="urls-button" href={ homepage }><span className="urls-icon">󰖟 </span>Website</a>
         )}
-        <a className="urls-button" href={ html_url }><span className="urls-icon">󰊤 </span> Github Code</a>
+        <a className="urls-button" href={ html_url }><span className="urls-icon">󰊤 </span>Github Code</a>
       </div>
     </div>
   )
