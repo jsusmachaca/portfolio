@@ -1,17 +1,8 @@
 import '/public/styles/projects.css'
+import type { ProjectItemProps } from '../../types/ProjectItem'
 
-const ProjectItem = (
-  { index, name, description, html_url, homepage, language, icon, stargazers_count, forks }: 
-  { index: number, 
-    name: string, 
-    description: string, 
-    html_url: string, 
-    homepage: string, 
-    language: string, 
-    icon: string, 
-    stargazers_count: number, 
-    forks: number 
-  }) => {
+const ProjectItem = ({ index, name, description, html_url, homepage, language, icon, stargazers_count, forks }: ProjectItemProps) => {
+
   return (
     <div id="card" key={index}>
       <div id="title-container">
