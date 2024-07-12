@@ -12,6 +12,11 @@
     border-radius: 10px;
     background-color: rgba(21, 22, 34, 0.850);
     overflow: hidden;
+    transition: all .17s ease-in-out;
+}
+#card:hover {
+    box-shadow: 0 0 10px #e80059ad;
+    transform: scale(105%);
 }
 #overlay {
     display: grid;
