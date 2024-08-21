@@ -30,6 +30,8 @@ const ProjectContainer = () => {
         return ''
       case 'Java':
         return ''
+      case 'Go':
+        return ''
       case 'Shell':
         return '󱆃'
       default:
